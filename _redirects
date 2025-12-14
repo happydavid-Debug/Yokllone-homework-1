@@ -1,0 +1,46 @@
+# Cloudflare Pages部署配置文件
+
+# 构建命令 - 由于是纯静态站点，不需要构建
+exit 0
+
+# 构建输出目录 - 根目录即为发布目录
+.
+
+# 生产分支
+main
+
+# 构建设置
+[build.environment]
+NODE_VERSION = "18"
+
+# 函数配置
+[[functions]]
+route = "/api/*"
+
+# 路由规则 - 确保API路由正确处理
+[[redirects]]
+from = "/api/*"
+to = "/api/:splat"
+status = 200
+
+# 缓存规则 - 优化静态资源缓存
+[[headers]]
+for = "/*"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/api/*"
+[headers.values]
+Cache-Control = "no-cache"
+
+# 压缩设置
+[[compress]]
+file_extensions = ["html", "css", "js", "json", "xml"]
+
+# 环境特定配置
+[env.production.vars]
+NODE_ENV = "production"
+
+[env.development.vars]
+NODE_ENV = "development"

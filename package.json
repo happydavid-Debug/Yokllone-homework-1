@@ -1,0 +1,35 @@
+{
+  "name": "assignment-publisher",
+  "version": "1.0.0",
+  "description": "一个适用于Cloudflare Pages的作业信息发布器",
+  "main": "index.html",
+  "scripts": {
+    "dev": "wrangler pages dev . --local --persist",
+    "preview": "wrangler pages dev . --local",
+    "deploy": "wrangler pages deploy .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cloudflare-pages",
+    "assignment",
+    "education",
+    "kv",
+    "api"
+  ],
+  "author": "MiniMax Agent",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/assignment-publisher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/assignment-publisher/issues"
+  },
+  "homepage": "https://github.com/your-username/assignment-publisher#readme"
+}
