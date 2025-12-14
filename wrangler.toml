@@ -1,51 +1,35 @@
-name = "assignment-publisher"
+name = "yokllone-homework"
 compatibility_date = "2025-12-14"
-
-[env.production]
-vars = { }
-
-# KV命名空间绑定
-[[kv_namespaces]]
-binding = "ASSIGNMENTS_KV"
-id = "c8c358bca8ea4a1583a1d86a80debfe6"
-preview_id = "c8c358bca8ea4a1583a1d86a80debfe6"
-
-# 路由配置
-[env.production.routes]
-# 如果需要自定义域名，在这里配置
-
-# 环境变量
-[env.production.vars]
-NODE_ENV = "production"
 
 # 构建配置
 [build]
 command = "echo 'No build needed for static site'"
 publish = "./"
 
-# 函数配置 - 扁平化结构
+# 函数配置
 [[functions]]
 route = "/api/*"
 
-# 兼容性设置
+# 全局KV绑定 - 所有环境共用
+[[kv_namespaces]]
+binding = "ASSIGNMENTS_KV"
+id = "c8c358bca8ea4a1583a1d86a80debfe6"
+preview_id = "c8c358bca8ea4a1583a1d86a80debfe6"
+
+# 生产环境
+[env.production]
+vars = { NODE_ENV = "production" }
+
 [env.production.compatibility_date]
 date = "2025-12-14"
 
 [env.production.compatibility_flags]
 flags = ["nodejs_compat"]
 
-# 开发环境配置
+# 开发环境
 [env.development]
 vars = { NODE_ENV = "development" }
 
-[[env.development.kv_namespaces]]
-binding = "ASSIGNMENTS_KV"
-preview_id = "c8c358bca8ea4a1583a1d86a80debfe6"
-
-# 预览环境配置
+# 预览环境  
 [env.preview]
 vars = { NODE_ENV = "preview" }
-
-[[env.preview.kv_namespaces]]
-binding = "ASSIGNMENTS_KV"
-preview_id = "c8c358bca8ea4a1583a1d86a80debfe6"
